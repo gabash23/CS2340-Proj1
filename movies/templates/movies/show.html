@@ -52,6 +52,11 @@
               href="{% url 'movies.delete_review' id=template_data.movie.id review_id=review.id %}">Delete
             </a>
             {% endif %}
+            {% if user.is_authenticated and user != review.user %}
+            <a class="btn btn-danger"
+              href="{% url 'movies.flag_and_delete' id=template_data.movie.id review_id=review.id %}">Flag
+            </a>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
